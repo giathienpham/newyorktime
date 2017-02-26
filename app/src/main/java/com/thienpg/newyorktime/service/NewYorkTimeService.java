@@ -1,5 +1,7 @@
 package com.thienpg.newyorktime.service;
 
+import android.support.annotation.Nullable;
+
 import com.thienpg.newyorktime.model.ArticleResponse;
 
 import retrofit2.Call;
@@ -16,7 +18,10 @@ import retrofit2.http.Query;
 public interface NewYorkTimeService {
 
     @GET("articlesearch.json")
-    Call<ArticleResponse> getArticles(@Query("api-key") String api_key,@Query("q") String query);
+    Call<ArticleResponse> getAllArticles(@Query("api-key") String api_key,@Query("q") String query);
+
+    @GET("articlesearch.json")
+    Call<ArticleResponse> getArticles(@Query("api-key") String api_key,@Query("q") String query,@Query("begin_date") String beginDate , @Query("fq") String fq, @Query("sort") String sort, @Query("page") Integer page);
 
 //    @GET("group/{id}/users")
 //    Call<List<User>> groupList(@Path("id") int groupId, @Query("sort") String sort);

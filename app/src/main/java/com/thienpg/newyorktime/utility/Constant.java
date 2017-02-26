@@ -7,4 +7,6 @@ package com.thienpg.newyorktime.utility;
 public class Constant {
     public static final String API_URL = "https://api.nytimes.com/svc/search/v2/";
     public static final String API_KEY = "06315dfb2c2e4cedbd34ee0e426bbbac";
+    public static final String IMG_URL = "http://www.nytimes.com/";
+
 }

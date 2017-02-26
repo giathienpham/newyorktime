@@ -3,13 +3,13 @@ package com.thienpg.newyorktime.model;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Multimedium {
+public class Multimedia {
 
     private Integer width;
     private String url;
     private Integer height;
     private String subtype;
-    private Legacy legacy;
+//    private Legacy legacy;
     private String type;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -45,13 +45,13 @@ public class Multimedium {
         this.subtype = subtype;
     }
 
-    public Legacy getLegacy() {
-        return legacy;
-    }
-
-    public void setLegacy(Legacy legacy) {
-        this.legacy = legacy;
-    }
+//    public Legacy getLegacy() {
+//        return legacy;
+//    }
+//
+//    public void setLegacy(Legacy legacy) {
+//        this.legacy = legacy;
+//    }
 
     public String getType() {
         return type;

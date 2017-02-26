@@ -2,11 +2,12 @@ package com.thienpg.newyorktime.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Doc {
+public class Doc implements Serializable{
 
     @SerializedName("web_url")
     private String webUrl;
@@ -14,18 +15,19 @@ public class Doc {
     private String leadParagraph;
     private Object _abstract;
     private String printPage;
-    private List<Object> blog = null;
+    private List<Object> blog;
     private String source;
-    private List<Multimedium> multimedia = null;
+    @SerializedName("multimedia")
+    private List<Multimedia> multimedia;
     private Headline headline;
-    private List<Keyword> keywords = null;
+    private List<Keyword> keywords;
     private String pubDate;
     @SerializedName("document_type")
     private String documentType;
     private String newsDesk;
     private String sectionName;
     private Object subsectionName;
-    private Byline byline;
+//    private Byline byline;
     private String typeOfMaterial;
     private String id;
     private String wordCount;
@@ -88,11 +90,11 @@ public class Doc {
         this.source = source;
     }
 
-    public List<Multimedium> getMultimedia() {
+    public List<Multimedia> getMultimedia() {
         return multimedia;
     }
 
-    public void setMultimedia(List<Multimedium> multimedia) {
+    public void setMultimedia(List<Multimedia> multimedia) {
         this.multimedia = multimedia;
     }
 
@@ -152,13 +154,13 @@ public class Doc {
         this.subsectionName = subsectionName;
     }
 
-    public Byline getByline() {
-        return byline;
-    }
-
-    public void setByline(Byline byline) {
-        this.byline = byline;
-    }
+//    public Byline getByline() {
+//        return byline;
+//    }
+//
+//    public void setByline(Byline byline) {
+//        this.byline = byline;
+//    }
 
     public String getTypeOfMaterial() {
         return typeOfMaterial;

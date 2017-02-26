@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">NewYorkTime</string>
+    <string name="beginDate">Begin Date</string>
+    <string name="sort_order">Sort Order</string>
+    <string name="filter_prompt">Sort By</string>
+    <string name="news_desk_value">News Desk Value</string>
+
+
+    <string-array name="filter_array">
+        <item>Newest</item>
+        <item>Oldest</item>
+    </string-array>
 </resources>
