@@ -3,6 +3,7 @@ package com.thienpg.newyorktime.fragment;
 import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.thienpg.newyorktime.R;
 import com.thienpg.newyorktime.model.Filter;
@@ -27,7 +29,7 @@ import butterknife.ButterKnife;
  * Created by Thien on 2/27/2017.
  */
 
-public class FilterFragment extends DialogFragment implements Button.OnEditorActionListener {
+public class FilterFragment extends DialogFragment  implements BeginDateFragment.BeginDateDialogListener {
 
     @BindView(R.id.begin_date) TextView beginDate;
     @BindView(R.id.spnSort) Spinner spinnerSort;
@@ -44,10 +46,12 @@ public class FilterFragment extends DialogFragment implements Button.OnEditorAct
     public FilterFragment() {
     }
 
-    @Override
-    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-            return true;
-    }
+
+
+//    @Override
+//    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+//            return true;
+//    }
 
     // 1. Defines the listener interface with a method passing back data result.
     public interface FilterFragmentListener {
@@ -80,12 +84,19 @@ public class FilterFragment extends DialogFragment implements Button.OnEditorAct
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
 
+        beginDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePickerDialog();
+            }
+        });
+
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                filter.setBeginDate("20170202");
+
 
 
                 if (spinnerSort.getSelectedItemPosition() == 0){
@@ -122,7 +133,19 @@ public class FilterFragment extends DialogFragment implements Button.OnEditorAct
     }
 
 
+    private void showDatePickerDialog() {
+        FragmentManager fm = getFragmentManager();
+        BeginDateFragment filterFragment = BeginDateFragment.newInstance("Some Title");
+        filterFragment.setTargetFragment(FilterFragment.this, 300);
 
+        filterFragment.show(fm, "dialog_time_picker");
+    }
 
+    @Override
+    public void onFinishPickDialog(String date) {
+        filter.setBeginDate(date);
+        beginDate.setText(date);
+        Toast.makeText(getActivity(), date, Toast.LENGTH_SHORT).show();
+    }
 
 }

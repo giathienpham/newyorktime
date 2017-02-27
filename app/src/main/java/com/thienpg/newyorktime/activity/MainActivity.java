@@ -173,7 +173,6 @@ public class MainActivity extends AppCompatActivity implements FilterFragment.Fi
         switch (item.getItemId()) {
             case R.id.action_filter:
                 showEditDialog();
-                Toast.makeText(context, "aaa", Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -200,6 +199,7 @@ public class MainActivity extends AppCompatActivity implements FilterFragment.Fi
             public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
                 if (response.body() == null){
                     Toast.makeText(MainActivity.this, "No result found", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 docs = response.body().getResponse().getDocs();
                 articlesAdapter.refreshData(docs);
@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements FilterFragment.Fi
         });
     }
 
-    public void loadNextDataFromApi(int offset) {
+    public void loadNextDataFromApi(final int offset) {
         // Send an API request to retrieve appropriate paginated data
         //  --> Send the request including an offset value (i.e `page`) as a query parameter.
         //  --> Deserialize and construct new model objects from the API response
@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements FilterFragment.Fi
                     return;
                 }
                 docs = response.body().getResponse().getDocs();
-                articlesAdapter.addData(docs);
+                articlesAdapter.addData(docs, offset);
 
             }
 

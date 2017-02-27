@@ -55,9 +55,9 @@ public class ArticlesAdapter extends RecyclerView.Adapter<ArticlesAdapter.ViewHo
         mDocs = docs;
         notifyDataSetChanged();
     }
-    public void addData(List<Doc> docs) {
+    public void addData(List<Doc> docs, int page) {
         mDocs.addAll(docs);
-        notifyDataSetChanged();
+        notifyItemInserted(page);
     }
 
     @Override

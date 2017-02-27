@@ -70,17 +70,17 @@
            android:orientation="vertical">
 
            <CheckBox
-               android:text="CheckBox"
+               android:text="@string/arts"
                android:layout_width="150dp"
                android:layout_height="wrap_content"
                android:id="@+id/cbArts" />
            <CheckBox
-               android:text="CheckBox"
+               android:text="@string/fashion_style"
                android:layout_width="150dp"
                android:layout_height="wrap_content"
                android:id="@+id/cbFashion" />
            <CheckBox
-               android:text="CheckBox"
+               android:text="@string/sports"
                android:layout_width="150dp"
                android:layout_height="wrap_content"
                android:id="@+id/cbSports" />
